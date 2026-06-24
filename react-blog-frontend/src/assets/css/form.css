@@ -76,8 +76,8 @@ textarea {
   cursor: pointer;
   font-size: 1rem;
   font-weight: 500;
-  background-color: transparent;
-  color: transparent;
+  background-color: var(--primary-color);
+  color: white;
   transition: all 0.2s ease;
 }
 
@@ -109,7 +109,7 @@ textarea {
 }
 
 .page-background {
-  background-image: url("http://localhost:3000/uploads/sign_pic.png");
+  background-color: #f5f5f5;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -120,7 +120,7 @@ textarea {
 }
 
 .page-background-top-left {
-  background-image: url("http://localhost:3000/uploads/sign_pic.png");
+  background-color: #f5f5f5;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -129,4 +129,31 @@ textarea {
   justify-content: flex-start;
   align-items: flex-start;
   padding: 2rem;
+}
+
+.login-link {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+}
+
+.login-link:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.success-message {
+  color: green;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
 }
