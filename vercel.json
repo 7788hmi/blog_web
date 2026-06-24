@@ -1,5 +1,7 @@
 {
+  "buildCommand": "cd react-blog-frontend && npm install && npm run build",
+  "outputDirectory": "react-blog-frontend/dist",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
