@@ -1,0 +1,10 @@
+{
+  "buildCommand": "cd react-blog-frontend && npm run build",
+  "outputDirectory": "react-blog-frontend/dist",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
