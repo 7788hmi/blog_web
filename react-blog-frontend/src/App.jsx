@@ -1,0 +1,63 @@
+import "react-toastify/dist/ReactToastify.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { ToastContainer } from "react-toastify";
+
+import { Routes, Route, Navigate } from "react-router-dom";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import PrivateLayout from "./components/layout/PrivateLayout";
+import CategoryList from "./pages/category/CategoryList";
+import PostList from "./pages/post/PostList";
+import Profile from "./pages/Profile";
+import Setting from "./pages/Setting";
+import PublicLayout from "./components/layout/PublicLayout";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import NewCategory from "./pages/category/NewCategory";
+import UpdateCategory from "./pages/category/UpdateCategory";
+import NewPost from "./pages/post/NewPost";
+import DetailPost from "./pages/post/DetailPost";
+import AddPost from "./pages/AddPost";
+
+import VerifyUser from "./pages/VerifyUser";
+import ForgotPassword from "./pages/ForgotPassword";
+import EditPost from "./pages/post/EditPost";
+import { AuthProvider } from "./components/context/AuthContext";
+
+function App() {
+  return (
+    <AuthProvider>
+      <Routes>
+        <Route element={<PublicLayout />}>
+          
+          <Route path="/home"  element={<Home />} />
+          <Route path="categories" element={<CategoryList />} />
+          <Route path="categories/new-category" element={<NewCategory />} />
+          <Route
+            path="categories/update-category/:id"
+            element={<UpdateCategory />}
+          />
+          <Route path="posts" element={<PostList />} />
+          <Route path="posts/new-post" element={<NewPost />} />
+          <Route path="posts/add-post" element={<AddPost />} />
+          <Route path="posts/detail-post/:id" element={<DetailPost />} />
+          <Route path="posts/edit-post/:id" element={<EditPost />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="setting" element={<Setting />} />
+          <Route path="verify-user" element={<VerifyUser />} />
+        </Route>
+
+        <Route element={<PublicLayout />}>
+        <Route path="/"  element={<Navigate to="/login" />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="login" element={<Login />} />
+          <Route path="forgot-password" element={<ForgotPassword />} />
+        </Route>
+      </Routes>
+      <Footer />
+    </AuthProvider>
+
+  );
+}
+
+export default App;
