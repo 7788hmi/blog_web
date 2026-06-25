@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 // Create an Axios instance with default configuration
+// Use environment variable for API URL, fallback to localhost for development
 const api = axios.create({
-  baseURL: 'http://localhost:3000', // Ensure this matches your backend URL
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3000',
 });
 
 // Add request interceptor to include token automatically
@@ -19,18 +20,7 @@ api.interceptors.request.use(
   }
 );
 
-// Optionally, you can add request/response interceptors
-api.interceptors.request.use(
-  (config) => {
-    // Modify request config if needed
-    return config;
-  },
-  (error) => {
-    // Handle request error
-    return Promise.reject(error);
-  }
-);
-
+// Handle response errors uniformly
 api.interceptors.response.use(
   (response) => {
     // Handle response data
@@ -38,6 +28,11 @@ api.interceptors.response.use(
   },
   (error) => {
     // Handle response error
+    if (error.response?.status === 401) {
+      // Token expired or invalid, redirect to login
+      localStorage.removeItem('token');
+      window.location.href = '/login';
+    }
     return Promise.reject(error);
   }
 );

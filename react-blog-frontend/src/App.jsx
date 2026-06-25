@@ -22,11 +22,10 @@ import AddPost from "./pages/AddPost";
 import VerifyUser from "./pages/VerifyUser";
 import ForgotPassword from "./pages/ForgotPassword";
 import EditPost from "./pages/post/EditPost";
-import { AuthProvider } from "./components/context/AuthContext";
 
 function App() {
   return (
-    <AuthProvider>
+    <>
       <Routes>
         <Route element={<PublicLayout />}>
           
@@ -55,8 +54,8 @@ function App() {
         </Route>
       </Routes>
       <Footer />
-    </AuthProvider>
-
+      <ToastContainer />
+    </>
   );
 }
 
